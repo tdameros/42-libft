@@ -1,0 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/06 23:42:40 by tdameros          #+#    #+#             */
+/*   Updated: 2022/10/08 22:27:53 by tdameros         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <libft.h>
+
+char	*ft_strchr(const char *s, int c)
+{
+	size_t	index;
+
+	index = 0;
+	while (s[index] != '\0')
+	{
+		if (s[index] == c)
+			return ((char *) &(s[index]));
+		index++;
+	}
+	return (NULL);
+}
