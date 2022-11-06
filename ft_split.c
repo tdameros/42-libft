@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 16:15:44 by tdameros          #+#    #+#             */
-/*   Updated: 2022/10/09 17:08:19 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/06 17:35:27 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_get_next_delim(char const *s, char c, size_t index)
 {
-	while (s[index] != c)
+	while (s[index] != c && s[index] != '\0')
 		index++;
 	return (index);
 }

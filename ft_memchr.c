@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 23:41:18 by tdameros          #+#    #+#             */
-/*   Updated: 2022/10/10 22:23:50 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/06 16:47:51 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	unsigned char	*s_char_ptr;
 
 	s_char_ptr = (unsigned char *) s;
-	if (n == 0)
-		return (0);
 	index = 0;
 	while (index < n)
 	{
-		if (s_char_ptr[index] == c)
+		if (s_char_ptr[index] == (unsigned char) c)
 			return (&(s_char_ptr[index]));
 		index++;
 	}

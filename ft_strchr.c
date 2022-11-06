@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 23:42:40 by tdameros          #+#    #+#             */
-/*   Updated: 2022/10/08 22:27:53 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/06 16:53:26 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *) &(s[index]));
 		index++;
 	}
+	if (s[index] == c)
+		return ((char *) &(s[index]));
 	return (NULL);
 }

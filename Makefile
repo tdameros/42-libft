@@ -1,10 +1,10 @@
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
 .SILENT:
 
 #**************************************  VARIABLES  **************************************#
 
 NAME			=	libft.a
-LOGS			=	false
+LOGS			=	true
 
 # --------------- FILES --------------- #
 
@@ -63,7 +63,7 @@ DIR_HEADERS		=	./
 
 # ------------- SHORTCUTS ------------- #
 
-HEADERS			= 	$(addprefix $(DIR_SRCS),$(LIST_HEADERS))
+HEADERS			= 	$(addprefix $(DIR_HEADERS),$(LIST_HEADERS))
 SRCS			=	$(addprefix $(DIR_SRCS),$(LIST_SRCS))
 OBJS			=	$(addprefix $(DIR_OBJS),$(LIST_SRCS:.c=.o))
 OBJS_BONUS		= 	$(addprefix $(DIR_OBJS),$(LIST_BONUS:.c=.o))
@@ -96,7 +96,7 @@ all : $(NAME)
 
 # ---------- VARIABLES RULES ---------- #
 
-$(NAME): $(DIR_OBJS) $(OBJS) $(HEADERS) Makefile
+$(NAME):  $(DIR_OBJS) $(OBJS) $(HEADERS) Makefile
 			$(AR) $(NAME) $(OBJS) -o $(NAME);
 			@if [ $(LOGS) = "true" ]; then\
 				printf "${BLUE}Generation with success of $(NAME) ☑️\n";\
@@ -110,16 +110,14 @@ bonus:	$(DIR_OBJS) $(OBJS) $(OBJS_BONUS) $(HEADERS) Makefile
 
 # ---------- COMPILED RULES ----------- #
 
-$(DIR_OBJS)%.o: $(DIR_SRCS)%.c $(HEADERS) Makefile
-				$(CC) $(CFLAGS) -I $(DIR_HEADERS) -c $< -o $@;
+$(DIR_OBJS)%.o: $(DIR_SRCS)%.c $(HEADERS)
+				$(CC) $(CFLAGS) -I $(DIR_HEADERS) -c $< -o $@
 				@if [ $(LOGS) = "true" ]; then\
         			printf "${GREEN}Successful compilation of $< ✅\n";\
     			fi
 
-$(DIR_OBJS) :
+$(DIR_OBJS):
 				$(MKDIR) $(DIR_OBJS)
-
-# ----------- COMPILED RULES ---------- #
 
 clean:
 		$(RM) $(DIR_OBJS)
