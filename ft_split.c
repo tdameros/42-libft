@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 16:15:44 by tdameros          #+#    #+#             */
-/*   Updated: 2022/11/07 16:42:12 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/08 00:14:34 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ char	**ft_split(char const *s, char c)
 	size_t	index_str;
 	size_t	index_delim;
 
+	if (s == NULL)
+		return (NULL);
 	tab_strs = malloc(sizeof(char *) * (ft_count_strs(s, c) + 1));
 	if (tab_strs == NULL)
 		return (NULL);
