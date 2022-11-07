@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 23:31:20 by tdameros          #+#    #+#             */
-/*   Updated: 2022/11/07 23:57:48 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/08 00:10:36 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (s == NULL)
 		return (NULL);
 	ft_memcpy(s, s1, len_s1 * sizeof(char));
-	ft_memcpy(s + len_s1, s2, len_s2 * sizeof(char));
-	s[len_s1 + index] = '\0';
+	ft_strlcpy(s + len_s1, s2, len_s2 + 1);
 	return (s);
 }
