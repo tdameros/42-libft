@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 23:56:58 by tdameros          #+#    #+#             */
-/*   Updated: 2022/10/10 22:25:04 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/08 00:11:53 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	index_start;
 	size_t	index_end;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	index_start = 0;
 	index_end = ft_strlen(s1) - 1;
 	while (s1[index_start] != '\0' && ft_is_in_set(s1[index_start], set))
