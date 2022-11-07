@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 23:24:04 by tdameros          #+#    #+#             */
-/*   Updated: 2022/10/11 00:30:40 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/07 23:37:35 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ char	*ft_itoa(int n)
 
 	len_n = ft_intlen(n);
 	str_n = malloc(sizeof(char) * (len_n + 1));
+	if (str_n == NULL)
+		return (NULL);
 	str_n[len_n--] = '\0';
 	index_stop = 0;
 	negative_case(str_n, &index_stop, &len_n, &n);

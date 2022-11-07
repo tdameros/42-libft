@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 23:02:29 by tdameros          #+#    #+#             */
-/*   Updated: 2022/10/11 23:17:51 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/07 23:51:18 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*new_lst;
 	t_list	*new_node;
 
+	if (lst == NULL || f == NULL || del == NULL)
+		return (NULL);
 	new_lst = NULL;
 	while (lst != NULL)
 	{

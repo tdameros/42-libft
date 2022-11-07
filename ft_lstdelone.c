@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:43:57 by tdameros          #+#    #+#             */
-/*   Updated: 2022/10/11 21:58:57 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/07 23:49:53 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (lst != NULL)
+	if (lst != NULL && del != NULL)
 	{
 		del(lst->content);
 		free(lst);

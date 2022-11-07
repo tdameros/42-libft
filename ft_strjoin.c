@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 23:31:20 by tdameros          #+#    #+#             */
-/*   Updated: 2022/10/08 23:36:47 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/07 23:57:48 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,16 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	index;
 	char	*s;
 
+	if (s1 == NULL && s2 == NULL)
+		return (NULL);
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
 	index = 0;
 	s = malloc(sizeof(char) * (len_s1 + len_s2 + 1));
 	if (s == NULL)
 		return (NULL);
-	while (index < len_s1)
-	{
-		s[index] = s1[index];
-		index++;
-	}
-	index = 0;
-	while (index < len_s2)
-	{
-		s[len_s1 + index] = s2[index];
-		index++;
-	}
+	ft_memcpy(s, s1, len_s1 * sizeof(char));
+	ft_memcpy(s + len_s1, s2, len_s2 * sizeof(char));
 	s[len_s1 + index] = '\0';
 	return (s);
 }

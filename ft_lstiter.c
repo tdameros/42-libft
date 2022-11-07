@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 22:36:34 by tdameros          #+#    #+#             */
-/*   Updated: 2022/10/11 23:29:36 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/07 23:50:20 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
+	if (f == NULL)
+		return ;
 	while (lst != NULL)
 	{
 		f(lst->content);

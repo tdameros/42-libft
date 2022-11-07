@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 22:53:32 by tdameros          #+#    #+#             */
-/*   Updated: 2022/11/07 23:33:24 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/07 23:54:28 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	len_s;
 	char	*substr;
 
+	if (s == NULL)
+		return (NULL);
 	index_substr = 0;
 	len_s = ft_strlen(s);
 	if (start >= len_s)

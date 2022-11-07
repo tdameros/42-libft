@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:10:09 by tdameros          #+#    #+#             */
-/*   Updated: 2022/10/11 23:29:26 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/07 23:38:44 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last_node;
 
+	if (lst == NULL || new == NULL)
+		return ;
 	if (*lst == NULL)
 		*lst = new;
 	else
