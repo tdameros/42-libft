@@ -103,7 +103,7 @@ $(NAME):  $(DIR_OBJS) $(OBJS) $(HEADERS) Makefile
 			fi
 
 bonus:	$(DIR_OBJS) $(OBJS) $(OBJS_BONUS) $(HEADERS) Makefile
-			$(AR) $(NAME) $(HEADERS) $(OBJS) $(OBJS_BONUS) -o $(NAME);
+			$(AR) $(NAME) $(HEADERS) $(OBJS) $(OBJS_BONUS);
 			@if [ $(LOGS) = "true" ]; then\
 				printf "${BLUE}Generation with success of $(NAME) bonus ☑️\n";\
 			fi
