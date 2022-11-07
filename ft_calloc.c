@@ -6,17 +6,35 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 21:01:21 by tdameros          #+#    #+#             */
-/*   Updated: 2022/11/07 21:15:27 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/07 21:59:06 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
+
+
+static size_t	ft_sqrt(size_t nb)
+{
+	size_t	x;
+	size_t	y;
+
+	x = 0.5 * nb + 0.5 * 1;
+	y = 1;
+	while (x - y >= 1)
+	{
+		x = 0.5 * (x + y);
+		y = nb / x;
+	}
+	return (x);
+}
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*malloc_ptr;
 	size_t	total_bytes;
 
+	if (ft_sqrt(nmemb) > ft_sqrt(SIZE_MAX) || ft_sqrt(size) > ft_sqrt(SIZE_MAX))
+		return (NULL);
 	total_bytes = nmemb * size;
 	malloc_ptr = (void *) malloc(total_bytes);
 	if (malloc_ptr == NULL)
