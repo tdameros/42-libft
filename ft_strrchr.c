@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 23:42:47 by tdameros          #+#    #+#             */
-/*   Updated: 2022/11/07 16:44:36 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/07 21:35:44 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	*ft_strrchr(const char *s, int c)
 	index = ft_strlen(s);
 	while (index > 0)
 	{
-		if (s[index] == (unsigned char) c)
-			return ((char *) &(s[index]));
+		if (s[index] == (char) c)
+			return ((char *) s + index);
 		index--;
 	}
 	if (s[index] == c)
-		return ((char *) &(s[index]));
+		return ((char *) s + index);
 	return (NULL);
 }
