@@ -72,7 +72,7 @@ OBJS_BONUS		= 	$(addprefix $(DIR_OBJS),$(LIST_BONUS:.c=.o))
 
 CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror
-AR				=	ar -rc
+AR				=	ar -rcs
 
 # --------------  DEBUGS -------------- #
 
@@ -97,7 +97,7 @@ all : $(NAME)
 # ---------- VARIABLES RULES ---------- #
 
 $(NAME):  $(DIR_OBJS) $(OBJS) $(HEADERS) Makefile
-			$(AR) $(NAME) $(OBJS) -o $(NAME);
+			$(AR) $(NAME) $(OBJS);
 			@if [ $(LOGS) = "true" ]; then\
 				printf "${BLUE}Generation with success of $(NAME) ☑️\n";\
 			fi
