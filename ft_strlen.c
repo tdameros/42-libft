@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 23:37:05 by tdameros          #+#    #+#             */
-/*   Updated: 2022/10/08 22:28:42 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/07 14:06:58 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	index;
+	char	*start_ptr;
+	char	*end_ptr;
 
-	index = 0;
-	while (s[index] != '\0')
-		index++;
-	return (index);
+	start_ptr = (char *) s;
+	end_ptr = (char *) s;
+	while (*end_ptr != '\0')
+		end_ptr++;
+	return (end_ptr - start_ptr);
 }
