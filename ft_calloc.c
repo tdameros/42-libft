@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 21:01:21 by tdameros          #+#    #+#             */
-/*   Updated: 2022/11/07 21:59:06 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/07 22:07:50 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*malloc_ptr;
 	size_t	total_bytes;
+	size_t	sqrt_size_max;
 
-	if (ft_sqrt(nmemb) > ft_sqrt(SIZE_MAX) || ft_sqrt(size) > ft_sqrt(SIZE_MAX))
+	sqrt_size_max = ft_sqrt(SIZE_MAX);
+	if (nmemb > sqrt_size_max || size > sqrt_size_max)
 		return (NULL);
 	total_bytes = nmemb * size;
 	malloc_ptr = (void *) malloc(total_bytes);
