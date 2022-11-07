@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 16:15:44 by tdameros          #+#    #+#             */
-/*   Updated: 2022/11/06 17:35:27 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/07 16:42:12 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,17 @@ static int	ft_count_strs(char const *s, char c)
 	return (count);
 }
 
+void	*ft_clear_tab(char **tab)
+{
+	while (tab != NULL)
+	{
+		free(*tab);
+		tab++;
+	}
+	free(tab);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**tab_strs;
@@ -59,6 +70,8 @@ char	**ft_split(char const *s, char c)
 	{
 		index_delim = ft_get_next_delim(s, c, index_str);
 		tab_strs[index_tab] = ft_substr(s, index_str, index_delim - index_str);
+		if (tab_strs[index_tab] == NULL)
+			return (ft_clear_tab(tab_strs));
 		index_str = ft_get_next_str(s, c, index_delim);
 		index_tab++;
 	}
