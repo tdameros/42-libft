@@ -6,14 +6,14 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 23:24:04 by tdameros          #+#    #+#             */
-/*   Updated: 2022/11/08 16:05:21 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/08 16:24:27 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <limits.h>
 
-static int	ft_intlen(int n);
+static int	intlen(int n);
 
 char	*ft_itoa(int n)
 {
@@ -23,7 +23,7 @@ char	*ft_itoa(int n)
 
 	if (n == INT_MIN)
 		return (ft_strdup("-2147483648"));
-	len_n = ft_intlen(n);
+	len_n = intlen(n);
 	str_n = malloc(sizeof(char) * (len_n + 1));
 	if (str_n == NULL)
 		return (NULL);
@@ -43,7 +43,7 @@ char	*ft_itoa(int n)
 	return (str_n);
 }
 
-static int	ft_intlen(int n)
+static int	intlen(int n)
 {
 	int	len;
 
