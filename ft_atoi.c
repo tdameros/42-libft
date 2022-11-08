@@ -6,13 +6,13 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:44:18 by tdameros          #+#    #+#             */
-/*   Updated: 2022/10/12 23:18:39 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/08 16:00:25 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-static int  count_white_spaces(const char *s);
+static int	count_white_spaces(const char *s);
 
 int	ft_atoi(const char *nptr)
 {
@@ -42,13 +42,13 @@ int	ft_atoi(const char *nptr)
 	return (result * sign);
 }
 
-static int  count_white_spaces(const char *s)
+static int	count_white_spaces(const char *s)
 {
-    int	index;
+	int	index;
 
-    index = 0;
-    while (s[index] == ' ' || s[index] == '\f' || s[index] == '\n'
-           || s[index] == '\r' || s[index] == '\t' || s[index] == '\v')
-        index++;
-    return (index);
+	index = 0;
+	while (s[index] == ' ' || s[index] == '\f' || s[index] == '\n'
+		|| s[index] == '\r' || s[index] == '\t' || s[index] == '\v')
+		index++;
+	return (index);
 }
