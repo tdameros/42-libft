@@ -12,16 +12,7 @@
 
 #include <libft.h>
 
-static int	count_white_spaces(const char *s)
-{
-	int	index;
-
-	index = 0;
-	while (s[index] == ' ' || s[index] == '\f' || s[index] == '\n'
-		|| s[index] == '\r' || s[index] == '\t' || s[index] == '\v')
-		index++;
-	return (index);
-}
+static int  count_white_spaces(const char *s);
 
 int	ft_atoi(const char *nptr)
 {
@@ -49,4 +40,15 @@ int	ft_atoi(const char *nptr)
 		index++;
 	}
 	return (result * sign);
+}
+
+static int  count_white_spaces(const char *s)
+{
+    int	index;
+
+    index = 0;
+    while (s[index] == ' ' || s[index] == '\f' || s[index] == '\n'
+           || s[index] == '\r' || s[index] == '\t' || s[index] == '\v')
+        index++;
+    return (index);
 }

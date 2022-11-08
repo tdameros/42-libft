@@ -21,7 +21,7 @@ void	ft_bzero(void *s, size_t n)
 	s_char_ptr = (unsigned char *) s;
 	while (index < n)
 	{
-		*s_char_ptr = '\0';
+		*s_char_ptr = 0;
 		s_char_ptr++;
 		index++;
 	}

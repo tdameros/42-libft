@@ -11,38 +11,10 @@
 /* ************************************************************************** */
 
 #include <libft.h>
+#include <limits.h>
 
-static int	ft_intlen(int n)
-{
-	int	len;
-
-	len = 1;
-	if (n < 0)
-		len++;
-	while (!(n > -10 && n < 10))
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
-
-static void	negative_case(char *str_n, int *index_stop, int *len_n, int *n)
-{
-	if (*n < 0)
-	{
-		str_n[0] = '-';
-		*index_stop = 1;
-		if (*n == -2147483648)
-		{
-			str_n[*len_n] = '8';
-			*len_n = *len_n - 1;
-			*n = 214748364;
-		}
-		else
-			*n = -(*n);
-	}
-}
+static int	ft_intlen(int n);
+static void	negative_case(char *str_n, int *index_stop, int *len_n, int *n);
 
 char	*ft_itoa(int n)
 {
@@ -63,4 +35,36 @@ char	*ft_itoa(int n)
 		n /= 10;
 	}
 	return (str_n);
+}
+
+static int	ft_intlen(int n)
+{
+    int	len;
+
+    len = 1;
+    if (n < 0)
+        len++;
+    while (!(n > -10 && n < 10))
+    {
+        n /= 10;
+        len++;
+    }
+    return (len);
+}
+
+static void	negative_case(char *str_n, int *index_stop, int *len_n, int *n)
+{
+    if (*n < 0)
+    {
+        str_n[0] = '-';
+        *index_stop = 1;
+        if (*n == -2147483648)
+        {
+            str_n[*len_n] = '8';
+            *len_n = *len_n - 1;
+            *n = 214748364;
+        }
+        else
+            *n = -(*n);
+    }
 }
