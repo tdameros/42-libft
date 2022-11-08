@@ -70,7 +70,6 @@ OBJS_BONUS		= 	$(addprefix $(DIR_OBJS),$(LIST_BONUS:.c=.o))
 
 # ------------ COMPILATION ------------ #
 
-CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror
 AR				=	ar -rcs
 
@@ -110,7 +109,7 @@ bonus:	$(DIR_OBJS) $(OBJS) $(OBJS_BONUS) $(HEADERS) Makefile
 
 # ---------- COMPILED RULES ----------- #
 
-$(DIR_OBJS)%.o: $(DIR_SRCS)%.c $(HEADERS)
+$(DIR_OBJS)%.o: $(DIR_SRCS)%.c $(HEADERS) Makefile
 				$(CC) $(CFLAGS) -I $(DIR_HEADERS) -c $< -o $@
 				@if [ $(LOGS) = "true" ]; then\
         			printf "${GREEN}Successful compilation of $< ✅\n";\
@@ -120,7 +119,7 @@ $(DIR_OBJS):
 				$(MKDIR) $(DIR_OBJS)
 
 clean:
-		$(RM) $(DIR_OBJS)
+		$(RM) $(OBJS) $(OBJS_BONUS)
 		@if [ $(LOGS) = "true" ]; then\
         	printf "${RED}Successful cleaning objects files 🗑️\n";\
     	fi
