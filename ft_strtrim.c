@@ -10,9 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-static int	ft_is_in_set(char c, char const *set)
+static int	is_in_set(char c, char const *set);
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	index_start;
+	size_t	index_end;
+
+	if (s1 == NULL || set == NULL)
+		return (NULL);
+	index_start = 0;
+	index_end = ft_strlen(s1) - 1;
+	while (s1[index_start] != '\0' && is_in_set(s1[index_start], set))
+		index_start++;
+	while (index_end > index_start && is_in_set(s1[index_end], set))
+		index_end--;
+	return (ft_substr(s1, index_start, index_end - index_start + 1));
+}
+
+static int	is_in_set(char c, char const *set)
 {
 	size_t	index;
 
@@ -24,20 +42,4 @@ static int	ft_is_in_set(char c, char const *set)
 		index++;
 	}
 	return (0);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	size_t	index_start;
-	size_t	index_end;
-
-	if (s1 == NULL || set == NULL)
-		return (NULL);
-	index_start = 0;
-	index_end = ft_strlen(s1) - 1;
-	while (s1[index_start] != '\0' && ft_is_in_set(s1[index_start], set))
-		index_start++;
-	while (index_end > index_start && ft_is_in_set(s1[index_end], set))
-		index_end--;
-	return (ft_substr(s1, index_start, index_end - index_start + 1));
 }
