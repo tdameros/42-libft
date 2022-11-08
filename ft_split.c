@@ -6,53 +6,16 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 16:15:44 by tdameros          #+#    #+#             */
-/*   Updated: 2022/11/08 00:14:34 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/08 16:18:15 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_get_next_delim(char const *s, char c, size_t index)
-{
-	while (s[index] != c && s[index] != '\0')
-		index++;
-	return (index);
-}
-
-static int	ft_get_next_str(char const *s, char c, size_t index)
-{
-	while (s[index] == c && s[index] != '\0')
-		index++;
-	return (index);
-}
-
-static int	ft_count_strs(char const *s, char c)
-{
-	size_t	index;
-	size_t	count;
-
-	index = 0;
-	count = 0;
-	index = ft_get_next_str(s, c, index);
-	while (s[index] != '\0')
-	{
-		index = ft_get_next_delim(s, c, index);
-		index = ft_get_next_str(s, c, index);
-		count++;
-	}
-	return (count);
-}
-
-void	*ft_clear_tab(char **tab)
-{
-	while (tab != NULL)
-	{
-		free(*tab);
-		tab++;
-	}
-	free(tab);
-	return (NULL);
-}
+static int	ft_get_next_str(char const *s, char c, size_t index);
+static int	ft_get_next_delim(char const *s, char c, size_t index);
+void		*ft_clear_tab(char **tab);
+static int	ft_count_strs(char const *s, char c);
 
 char	**ft_split(char const *s, char c)
 {
@@ -79,4 +42,46 @@ char	**ft_split(char const *s, char c)
 	}
 	tab_strs[index_tab] = NULL;
 	return (tab_strs);
+}
+
+static int	ft_count_strs(char const *s, char c)
+{
+	size_t	index;
+	size_t	count;
+
+	index = 0;
+	count = 0;
+	index = ft_get_next_str(s, c, index);
+	while (s[index] != '\0')
+	{
+		index = ft_get_next_delim(s, c, index);
+		index = ft_get_next_str(s, c, index);
+		count++;
+	}
+	return (count);
+}
+
+static int	ft_get_next_str(char const *s, char c, size_t index)
+{
+	while (s[index] == c && s[index] != '\0')
+		index++;
+	return (index);
+}
+
+static int	ft_get_next_delim(char const *s, char c, size_t index)
+{
+	while (s[index] != c && s[index] != '\0')
+		index++;
+	return (index);
+}
+
+void	*ft_clear_tab(char **tab)
+{
+	while (tab != NULL)
+	{
+		free(*tab);
+		tab++;
+	}
+	free(tab);
+	return (NULL);
 }
