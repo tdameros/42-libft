@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 22:53:32 by tdameros          #+#    #+#             */
-/*   Updated: 2022/11/07 23:54:28 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/08 23:52:07 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	index_substr = 0;
 	len_s = ft_strlen(s);
-	if (start > len_s)
+	if (start >= len_s)
 		return (ft_strdup(""));
-	if (len_s < len)
+	if (len_s <= len)
 		substr = malloc(sizeof(char) * (len_s - start + 1));
 	else
 		substr = malloc(sizeof(char) * (len + 1));
