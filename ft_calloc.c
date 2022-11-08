@@ -6,11 +6,12 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 21:01:21 by tdameros          #+#    #+#             */
-/*   Updated: 2022/11/08 00:34:21 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/08 22:44:33 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
+#include <stdint.h>
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {

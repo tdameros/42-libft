@@ -1,10 +1,8 @@
 .PHONY: all clean fclean re bonus
-.SILENT:
 
-#**************************************  VARIABLES  **************************************#
+#*******************************  VARIABLES  **********************************#
 
 NAME			=	libft.a
-LOGS			=	true
 
 # --------------- FILES --------------- #
 
@@ -44,15 +42,15 @@ LIST_SRCS		=	ft_isalpha.c \
 					ft_putendl_fd.c \
 					ft_putnbr_fd.c \
 
-LIST_BONUS		=	ft_lstnew.c \
-					ft_lstadd_front.c \
-					ft_lstsize.c \
-					ft_lstlast.c \
-					ft_lstadd_back.c \
-					ft_lstdelone.c \
-					ft_lstclear.c \
-					ft_lstiter.c \
-					ft_lstmap.c \
+LIST_BONUS		=	ft_lstnew_bonus.c \
+					ft_lstadd_front_bonus.c \
+					ft_lstsize_bonus.c \
+					ft_lstlast_bonus.c \
+					ft_lstadd_back_bonus.c \
+					ft_lstdelone_bonus.c \
+					ft_lstclear_bonus.c \
+					ft_lstiter_bonus.c \
+					ft_lstmap_bonus.c \
 
 # ------------ DIRECTORIES ------------ #
 
@@ -71,63 +69,37 @@ OBJS_BONUS		= 	$(addprefix $(DIR_OBJS),$(LIST_BONUS:.c=.o))
 # ------------ COMPILATION ------------ #
 
 CFLAGS			=	-Wall -Wextra -Werror
-AR				=	ar -rcs
-
-# --------------  DEBUGS -------------- #
-
-DB				=	gdb
-DBFLAGS			=	-g3 -fsanitize=address
+AR				=	ar rcs
 
 # -------------  COMMANDS ------------- #
 
 RM				=	rm -rf
 MKDIR			=	mkdir -p
 
-# --------------- COLORS -------------- #
+#***********************************  RULES  **********************************#
 
-RED = \033[31m
-GREEN = \033[32m
-BLUE = \033[34m
-
-#**************************************  RULES  **************************************#
-
-all : $(NAME)
+all:			$(NAME)
 
 # ---------- VARIABLES RULES ---------- #
 
-$(NAME):  $(DIR_OBJS) $(OBJS) $(HEADERS) Makefile
-			$(AR) $(NAME) $(OBJS);
-			@if [ $(LOGS) = "true" ]; then\
-				printf "${BLUE}Generation with success of $(NAME) ☑️\n";\
-			fi
+$(NAME):		$(DIR_OBJS) $(OBJS) $(HEADERS) Makefile
+					$(AR) $(NAME) $(OBJS);
 
-bonus:	$(DIR_OBJS) $(OBJS) $(OBJS_BONUS) $(HEADERS) Makefile
-			$(AR) $(NAME) $(OBJS) $(OBJS_BONUS);
-			@if [ $(LOGS) = "true" ]; then\
-				printf "${BLUE}Generation with success of $(NAME) bonus ☑️\n";\
-			fi
+bonus:			$(DIR_OBJS) $(OBJS) $(OBJS_BONUS) $(HEADERS) Makefile
+					$(AR) $(NAME) $(OBJS) $(OBJS_BONUS);
 
 # ---------- COMPILED RULES ----------- #
 
-$(DIR_OBJS)%.o: $(DIR_SRCS)%.c $(HEADERS) Makefile
-				$(CC) $(CFLAGS) -I $(DIR_HEADERS) -c $< -o $@
-				@if [ $(LOGS) = "true" ]; then\
-        			printf "${GREEN}Successful compilation of $< ✅\n";\
-    			fi
+$(DIR_OBJS)%.o:	$(DIR_SRCS)%.c $(HEADERS) Makefile
+					$(CC) $(CFLAGS) -I $(DIR_HEADERS) -c $< -o $@
 
 $(DIR_OBJS):
-				$(MKDIR) $(DIR_OBJS)
+					$(MKDIR) $(DIR_OBJS)
 
 clean:
-		$(RM) $(OBJS) $(OBJS_BONUS)
-		@if [ $(LOGS) = "true" ]; then\
-        	printf "${RED}Successful cleaning objects files 🗑️\n";\
-    	fi
+					$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
-		$(RM) $(NAME)
-		@if [ $(LOGS) = "true" ]; then\
-        	printf "${RED}Successful cleaning $(NAME) 🗑️\n";\
-    	fi
+					$(RM) $(NAME)
 
-re: fclean $(NAME)
+re:				fclean $(NAME)
