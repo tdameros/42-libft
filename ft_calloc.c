@@ -6,7 +6,7 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 21:01:21 by tdameros          #+#    #+#             */
-/*   Updated: 2022/11/08 22:44:33 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/08 23:06:45 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void	*malloc_ptr;
 	size_t	total_bytes;
 
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
 	if (SIZE_MAX / size < nmemb)
 		return (NULL);
 	total_bytes = nmemb * size;
