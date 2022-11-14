@@ -6,37 +6,38 @@
 /*   By: tdameros <tdameros@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 15:44:18 by tdameros          #+#    #+#             */
-/*   Updated: 2022/11/08 16:00:25 by tdameros         ###   ########lyon.fr   */
+/*   Updated: 2022/11/14 23:48:45 by tdameros         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
 static int	count_white_spaces(const char *s);
+static int	check_overflow(const char *str, int result, int sign);
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *str)
 {
 	int	result;
 	int	sign;
 	int	index;
-	int	int_max;
 
 	result = 0;
 	sign = 1;
-	index = count_white_spaces(nptr);
-	int_max = 2147483647;
-	if (nptr[index] == '-')
+	str += count_white_spaces(str);
+	index = 0;
+	if (str[index] == '-')
 	{
 		sign = -1;
-		index++;
+		str++;
 	}
-	else if (nptr[index] == '+')
-		index++;
-	while (ft_isdigit(nptr[index]))
+	else if (str[index] == '+')
+		str++;
+	while (ft_isdigit(str[index]))
 	{
-		if (result == int_max / 10 && nptr[index] == '8')
-			return (int_max * -1 - 1);
-		result = result * 10 + (nptr[index] - '0');
+		if (index == 9)
+			return (check_overflow(str, result, sign));
+		result = result * 10 + (str[index] - '0');
 		index++;
 	}
 	return (result * sign);
@@ -51,4 +52,17 @@ static int	count_white_spaces(const char *s)
 		|| s[index] == '\r' || s[index] == '\t' || s[index] == '\v')
 		index++;
 	return (index);
+}
+
+static int	check_overflow(const char *str, int result, int sign)
+{	
+	if (ft_isdigit(str[10]))
+		return (-1);
+	if (result >= INT_MAX / 10 && sign == 1 && str[9] > '7')
+		return (-1);
+	if (result >= INT_MAX / 10 && sign == -1 && str[9] > '8')
+		return (-1);
+	if (result == INT_MAX / 10 && sign == -1 && str[9] == '8')
+		return (INT_MIN);
+	return ((result * 10 + (str[9] - '0')) * sign);
 }
