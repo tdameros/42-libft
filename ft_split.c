@@ -77,10 +77,13 @@ static int	get_next_delim(char const *s, char c, size_t index)
 
 static void	*clear_tab(char **tab)
 {
-	while (tab != NULL)
+	size_t	index;
+
+	index = 0;
+	while (tab[index] != NULL)
 	{
-		free(*tab);
-		tab++;
+		free(tab[index]);
+		index++;
 	}
 	free(tab);
 	return (NULL);
