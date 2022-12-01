@@ -13,19 +13,6 @@
 #include "ft_printf.h"
 
 /**
- * @return len of s.
- */
-size_t	ft_strlen(const char *s)
-{
-	char	*ptr;
-
-	ptr = (char *) s;
-	while (*ptr != '\0')
-		ptr++;
-	return (ptr - s);
-}
-
-/**
  * Print string in stdout. Print (null) is pointer is NULL.
  * @return the number of characters printed or
  * a negative value if an error occurs.

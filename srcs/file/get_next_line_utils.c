@@ -75,16 +75,6 @@ char	*sub_line_in_buf(char *buf, size_t start, size_t len)
 	return (substr);
 }
 
-size_t	ft_strlen(const char *s)
-{
-	char	*end_ptr;
-
-	end_ptr = (char *) s;
-	while (*end_ptr != '\0')
-		end_ptr++;
-	return (end_ptr - s);
-}
-
 /**
  * Join 2 strings and free them.
  * @param s1

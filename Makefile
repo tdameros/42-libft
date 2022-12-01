@@ -1,4 +1,4 @@
-NAME			=	ft_libc.a
+NAME			=	libft.a
 
 SRCS			=	srcs/char/ft_isalnum.c \
 					srcs/char/ft_isalpha.c \
@@ -74,7 +74,7 @@ re : fclean all
 
 -include $(DEPS)
 
-$(DIR_BUILD)%.o : %.c Makefile
+$(DIR_BUILD)%.o : %.c
 		mkdir -p $(shell dirname $@)
 		$(CC) $(CFLAGS) $(DEPS_FLAGS) -I $(DIR_INCS) -c $< -o $@
 
