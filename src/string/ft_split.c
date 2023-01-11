@@ -14,7 +14,6 @@
 
 static int	get_next_str(char const *s, char c, size_t index);
 static int	get_next_delim(char const *s, char c, size_t index);
-static void	*clear_tab(char **tab);
 static int	count_strs(char const *s, char c);
 
 char	**ft_split(char const *s, char c)
@@ -36,7 +35,7 @@ char	**ft_split(char const *s, char c)
 		index_delim = get_next_delim(s, c, index_str);
 		tab_strs[index_tab] = ft_substr(s, index_str, index_delim - index_str);
 		if (tab_strs[index_tab] == NULL)
-			return (clear_tab(tab_strs));
+			return (ft_free_split(tab_strs));
 		index_str = get_next_str(s, c, index_delim);
 		index_tab++;
 	}
@@ -75,7 +74,7 @@ static int	get_next_delim(char const *s, char c, size_t index)
 	return (index);
 }
 
-static void	*clear_tab(char **tab)
+void	*ft_free_split(char **tab)
 {
 	size_t	index;
 

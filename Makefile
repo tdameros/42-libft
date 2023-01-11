@@ -1,56 +1,57 @@
 NAME			=	libft.a
 
-SRCS			=	srcs/char/ft_isalnum.c \
-					srcs/char/ft_isalpha.c \
-					srcs/char/ft_isascii.c \
-					srcs/char/ft_isdigit.c \
-					srcs/char/ft_isprint.c \
-					srcs/char/ft_tolower.c \
-					srcs/char/ft_toupper.c \
-					srcs/int/ft_atoi.c \
-					srcs/list/ft_lstadd_back.c \
-					srcs/list/ft_lstadd_front.c \
-					srcs/list/ft_lstclear.c \
-					srcs/list/ft_lstdelone.c \
-					srcs/list/ft_lstiter.c \
-					srcs/list/ft_lstlast.c \
-					srcs/list/ft_lstmap.c \
-					srcs/list/ft_lstnew.c \
-					srcs/list/ft_lstsize.c \
-					srcs/mem/ft_bzero.c \
-					srcs/mem/ft_calloc.c \
-					srcs/mem/ft_memchr.c \
-					srcs/mem/ft_memcmp.c \
-					srcs/mem/ft_memcpy.c \
-					srcs/mem/ft_memmove.c \
-					srcs/mem/ft_memset.c \
-					srcs/print/ft_printf.c \
-					srcs/print/print_hexa.c \
-					srcs/print/print_number.c \
-					srcs/print/print_string.c \
-					srcs/put/ft_putchar_fd.c \
-					srcs/put/ft_putendl_fd.c \
-					srcs/put/ft_putnbr_fd.c \
-					srcs/put/ft_putstr_fd.c \
-					srcs/string/ft_itoa.c \
-					srcs/string/ft_split.c \
-					srcs/string/ft_strchr.c \
-					srcs/string/ft_strdup.c \
-					srcs/string/ft_striteri.c \
-					srcs/string/ft_strjoin.c \
-					srcs/string/ft_strlcat.c \
-					srcs/string/ft_strlcpy.c \
-					srcs/string/ft_strlen.c \
-					srcs/string/ft_strmapi.c \
-					srcs/string/ft_strncmp.c \
-					srcs/string/ft_strnstr.c \
-					srcs/string/ft_strrchr.c \
-					srcs/string/ft_strtrim.c \
-					srcs/string/ft_substr.c \
-					srcs/file/get_next_line.c \
-					srcs/file/get_next_line_utils.c
+SRCS			=	src/char/ft_isalnum.c \
+					src/char/ft_isalpha.c \
+					src/char/ft_isascii.c \
+					src/char/ft_isdigit.c \
+					src/char/ft_isprint.c \
+					src/char/ft_tolower.c \
+					src/char/ft_toupper.c \
+					src/int/ft_atoi.c \
+					src/list/ft_lstadd_back.c \
+					src/list/ft_lstadd_front.c \
+					src/list/ft_lstclear.c \
+					src/list/ft_lstdelone.c \
+					src/list/ft_lstiter.c \
+					src/list/ft_lstlast.c \
+					src/list/ft_lstmap.c \
+					src/list/ft_lstnew.c \
+					src/list/ft_lstsize.c \
+					src/mem/ft_bzero.c \
+					src/mem/ft_calloc.c \
+					src/mem/ft_memchr.c \
+					src/mem/ft_memcmp.c \
+					src/mem/ft_memcpy.c \
+					src/mem/ft_memmove.c \
+					src/mem/ft_memset.c \
+					src/print/ft_printf.c \
+					src/print/print_hexa.c \
+					src/print/print_number.c \
+					src/print/print_string.c \
+					src/put/ft_putchar_fd.c \
+					src/put/ft_putendl_fd.c \
+					src/put/ft_putnbr_fd.c \
+					src/put/ft_putstr_fd.c \
+					src/string/ft_is_number.c \
+					src/string/ft_itoa.c \
+					src/string/ft_split.c \
+					src/string/ft_strchr.c \
+					src/string/ft_strdup.c \
+					src/string/ft_striteri.c \
+					src/string/ft_strjoin.c \
+					src/string/ft_strlcat.c \
+					src/string/ft_strlcpy.c \
+					src/string/ft_strlen.c \
+					src/string/ft_strmapi.c \
+					src/string/ft_strncmp.c \
+					src/string/ft_strnstr.c \
+					src/string/ft_strrchr.c \
+					src/string/ft_strtrim.c \
+					src/string/ft_substr.c \
+					src/file/get_next_line.c \
+					src/file/get_next_line_utils.c
 
-DIR_INCS		=	incs/
+DIR_INCS		=	include/
 DIR_BUILD		=	.build/
 OBJS			=	$(patsubst %.c, $(DIR_BUILD)%.o, $(SRCS))
 DEPS			=	$(patsubst %.c, $(DIR_BUILD)%.d, $(SRCS))
@@ -70,7 +71,8 @@ clean :
 fclean : clean
 		$(RM) $(NAME)
 
-re : fclean all
+re : fclean
+	$(MAKE) all
 
 -include $(DEPS)
 
