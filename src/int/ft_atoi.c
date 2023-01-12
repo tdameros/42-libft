@@ -12,6 +12,7 @@
 
 #include "libft.h"
 #include <limits.h>
+#include <errno.h>
 
 static size_t	count_white_spaces(const char *s);
 static int		check_overflow(const char *str, size_t index,
@@ -59,11 +60,17 @@ static size_t	count_white_spaces(const char *s)
 
 static int	check_overflow(const char *str, size_t index, long result, int sign)
 {	
-	if (LONG_MAX / 10 < result * sign
-		|| LONG_MAX - (str[index] - '0') < result * 10 * sign)
-		return ((int) LONG_MAX);
-	if (LONG_MIN / 10 > result * sign
-		|| LONG_MIN + (str[index] - '0') > result * 10 * sign)
-		return ((int) LONG_MIN);
+	if (INT_MAX / 10 < result * sign
+		|| INT_MAX - (str[index] - '0') < result * 10 * sign)
+	{
+		errno = -1;
+		return ((int) INT_MAX);
+	}
+	if (INT_MIN / 10 > result * sign
+		|| INT_MIN + (str[index] - '0') > result * 10 * sign)
+	{
+		errno = -1;
+		return ((int) INT_MIN);
+	}
 	return (0);
 }
