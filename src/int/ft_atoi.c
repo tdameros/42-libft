@@ -63,13 +63,13 @@ static int	check_overflow(const char *str, size_t index, long result, int sign)
 	if (INT_MAX / 10 < result * sign
 		|| INT_MAX - (str[index] - '0') < result * 10 * sign)
 	{
-		errno = -1;
+		errno = EOVERFLOW;
 		return ((int) INT_MAX);
 	}
 	if (INT_MIN / 10 > result * sign
 		|| INT_MIN + (str[index] - '0') > result * 10 * sign)
 	{
-		errno = -1;
+		errno = EOVERFLOW;
 		return ((int) INT_MIN);
 	}
 	return (0);
